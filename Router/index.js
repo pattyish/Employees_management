@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import createEmployee from './createEmployeeRouter';
 import editEmployee from './editEmployeeRecord';
+import deleteEmployee from './deleteEmployeeRouter';
 const app = express();
 
 app.use(bodyParser.json());
@@ -18,6 +19,7 @@ app.use((req, res, next)=> {
 });
 app.use('/employee_management/api', createEmployee);
 app.use('/employee_management/api', editEmployee);
+app.use('/employee_management/api', deleteEmployee);
 
 export default app;
 

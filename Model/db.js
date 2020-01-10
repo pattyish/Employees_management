@@ -62,6 +62,21 @@ class Dboperations {
       console.log(error);
     }
   }
+  async deleteEmployee(id){
+    try {
+     const deleteQuery = {
+       text: `DELETE FROM ${this.tableName} WHERE empl_id = $1 RETURNING *`,
+       values: [id]
+     }
+       const results = pool.query(deleteQuery);
+       return {
+         deleted: results.rows,
+         count: results.rowCount
+       }
+    }catch(error){
+      console.log(error);
+    }
+    }
 }
 
 export { Dboperations as default };
