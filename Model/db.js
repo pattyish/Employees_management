@@ -50,10 +50,9 @@ class Dboperations {
     Object.keys(data).forEach(key => {
       params.push(data[key]);
     });
-    console.log(params)
     try {
       const updateQuery = {
-        text: `UPDATE ${this.tableName} SET nationalId = $2, phone = $3, email = $4, dob = $5, position = $6, status = $7 WHERE empl_id = $1  RETURNING *`,
+        text: `UPDATE ${this.tableName} SET empl_name = $2, nationalId = $3, phone = $4, email = $5, dob = $6, position = $7, status = $8 WHERE empl_id = $1  RETURNING *`,
         values: params
       };
       const results = await pool.query(updateQuery);
@@ -62,21 +61,49 @@ class Dboperations {
       console.log(error);
     }
   }
-  async deleteEmployee(id){
+  async deleteEmployee(id) {
     try {
-     const deleteQuery = {
-       text: `DELETE FROM ${this.tableName} WHERE empl_id = $1 RETURNING *`,
-       values: [id]
-     }
-       const results = pool.query(deleteQuery);
-       return {
-         deleted: results.rows,
-         count: results.rowCount
-       }
-    }catch(error){
+      const deleteQuery = {
+        text: `DELETE FROM ${this.tableName} WHERE empl_id = $1 RETURNING *`,
+        values: [id]
+      };
+      const results = pool.query(deleteQuery);
+      return {
+        deleted: results.rows,
+        count: results.rowCount
+      };
+    } catch (error) {
       console.log(error);
     }
+  }
+  async activateEmployee(params) {
+    try {
+      const activateQuery = {
+        text: `UPDATE ${this.tableName} SET status = 1  WHERE empl_id = $1 RETURNING *`,
+        values: params
+      };
+      const results = pool.query(activateQuery);
+      return results.rows[0];
+    } catch (error) {
+      console.log(error);
     }
+  }
+  async suspendEmployee(data) {
+    try {
+      Object.keys(data).forEach(key => {
+        params.push(data[key]);
+      });
+      console.log(params);
+      const suspengQuery = {
+        text: `UPDATE ${this.tableName} SET status = $1 WHERE empl_id = $2 RETURNING *`,
+        values: params
+      };
+      const results = pool.query(suspengQuery);
+      return results.rows[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 export { Dboperations as default };

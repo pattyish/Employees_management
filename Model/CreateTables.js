@@ -15,12 +15,13 @@ const TableCreated = pool.query(
      );
         CREATE TABLE employees(
         empl_id BIGSERIAL PRIMARY KEY,
+        empl_name VARCHAR(200) NOT null,
         nationalId VARCHAR(50) NOT null unique,
         phone VARCHAR(50) NOT null unique,
         email VARCHAR(150) NOT null unique,
         dob VARCHAR(20) NOT null, 
-        position VARCHAR(200) NOT NULL,
-        status boolean
+        position  BIGINT REFERENCES position(position_id),
+        status  BIGINT REFERENCES status(status_id)
     );
     INSERT INTO status(status_name)
       VALUES(
@@ -40,14 +41,15 @@ const TableCreated = pool.query(
         'designer'
       ) RETURNING *;  
       INSERT INTO employees 
-    (nationalId, phone, email, dob, position, status)
+    (empl_name, nationalId, phone, email, dob, position, status)
       VALUES(
+      'patrick', 
       '1234567890123456',
       '0782214140',
       'patrickishimwe40@gmail.com',
       '04/09/1996',
-      'developer',
-      true
+      '1',
+      '2'
       ) RETURNING *;
     `
 );

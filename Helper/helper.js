@@ -5,6 +5,9 @@ dotenv.config();
 class Userhelper {
   employeeInfoValidation(body) {
     const schema = Joi.object ({
+      empl_name: Joi.string()
+         .min(5)
+         .required(),
       nationalId: Joi.string()
         .min(4)
         .required(),
@@ -19,9 +22,9 @@ class Userhelper {
         .min(5)
         .required(),
       position: Joi.string()
-        .min(4)
+        .max(150)
         .required(),
-      status: Joi.boolean()
+      status: Joi.number()
     });
     return schema.validate(body);
   }
