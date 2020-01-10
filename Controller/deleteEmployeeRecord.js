@@ -21,7 +21,7 @@ export default class EditEmployeeRecord {
       .status(200)
       .json({
         status: 200,
-        message: `employee with ${id} is successful deleted`
+        message: `employee with ${isEmployeeExist.row[0].email} is successful deleted`
       });
   }
 }

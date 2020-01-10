@@ -1,6 +1,7 @@
 
 class EmployeeSchema {
   constructor(employeeData) {
+    this.empl_name = employeeData.empl_name;
     this.nationalId = employeeData.nationalId;
     this.phone = employeeData.phone;
     this.email = employeeData.email;
@@ -11,6 +12,7 @@ class EmployeeSchema {
 
   displayUser() {
     return {
+      empl_name: this.empl_name,
       nationalId: this.nationalId,
       phone: this.phone,
       email: this.email,
