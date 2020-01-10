@@ -39,14 +39,27 @@ class Dboperations {
         )}) VALUES ${chunks.join(",")} RETURNING *`,
         values: params
       };
-      console.log(keys.join(","));
-      console.log(params);
-      console.log(values);
-      console.log(chunks.join(","));
       const results = await pool.query(insertQuery);
       return results.rows;
     } catch (err) {
       console.log(`error on insert ${err}`);
+    }
+  }
+  async editData(id, data) {
+    const params = [id];
+    Object.keys(data).forEach(key => {
+      params.push(data[key]);
+    });
+    console.log(params)
+    try {
+      const updateQuery = {
+        text: `UPDATE ${this.tableName} SET nationalId = $2, phone = $3, email = $4, dob = $5, position = $6, status = $7 WHERE empl_id = $1  RETURNING *`,
+        values: params
+      };
+      const results = await pool.query(updateQuery);
+      return results.rows[0];
+    } catch (error) {
+      console.log(error);
     }
   }
 }
