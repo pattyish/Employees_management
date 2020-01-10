@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "createTables": "babel-node models/createTables tablesCreated"
+    "createTables": "babel-node Model/CreateTables TableCreated"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
+    "@hapi/joi": "^17.0.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
