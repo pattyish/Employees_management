@@ -1,4 +1,9 @@
-import express from 'express';
-import sum1 from './app';
+import app from './Router/index';
 
-console.log(sum1(1, 2))
+const port = process.env.PORT || 500;
+
+app.listen(port, () => {
+    console.log(`server running on port ${port}`);
+});
+
+export { app as default };
