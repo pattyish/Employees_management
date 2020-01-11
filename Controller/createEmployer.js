@@ -3,6 +3,7 @@ import Helper from "../Helper/helper";
 import DbOperation from "../Model/db";
 import sendingEmail from "./sendingEmail";
 import phoneValidation from "../Helper/phoneNumberValidation";
+import idValidation from "../Helper/Idvalidation";
 
 const Helpers = new Helper();
 const DbQuery = new DbOperation("employees");
@@ -19,6 +20,11 @@ class EmployeeController {
         return res
           .status(400)
           .json({ status: 400, message: "wrong phone number" });
+      }
+      if (idValidation(body.nationalId) == false) {
+        return res
+          .status(400)
+          .json({ status: 400, message: "national id should be 16 digits" });
       }
       const isIdExist = await DbQuery.selectByField(
         "nationalId",
