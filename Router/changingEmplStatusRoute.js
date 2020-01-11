@@ -4,6 +4,6 @@ const router = express.Router();
 const ChangeEmployeeStatus = new ChangingStatus();
 
 router.put('/employees/:employeeid/activate', ChangeEmployeeStatus.activateEmployee);
-router.put('/employees/:employeeid/suspend', ChangeEmployeeStatus.activateEmployee);
+router.put('/employees/:employeeid/suspend', ChangeEmployeeStatus.suspendEmployee);
 
 export { router as default };
