@@ -1,7 +1,8 @@
 import EmployeeSchema from "../Model/employeeSchema";
 import Helper from "../Helper/helper";
 import DbOperation from "../Model/db";
-import sendingEmail from './sendingEmail';
+import sendingEmail from "./sendingEmail";
+import phoneValidation from "../Helper/phoneNumberValidation";
 
 const Helpers = new Helper();
 const DbQuery = new DbOperation("employees");
@@ -14,6 +15,11 @@ class EmployeeController {
         return res
           .status(400)
           .json({ status: 400, message: error.details[0].message });
+      if (phoneValidation(body.phone) == false) {
+        return res
+          .status(400)
+          .json({ status: 400, message: "wrong phone number" });
+      }
       const isIdExist = await DbQuery.selectByField(
         "nationalId",
         body.nationalId
@@ -29,7 +35,7 @@ class EmployeeController {
         return res
           .status(500)
           .json({ status: 500, message: "database operation fail" });
-          sendingEmail(saveEmployee);
+      sendingEmail(saveEmployee);
       return res.status(201).json({
         status: 201,
         message: "employee created successful",
