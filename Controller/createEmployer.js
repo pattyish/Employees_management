@@ -12,8 +12,8 @@ class EmployeeController {
       const { error } = await Helpers.employeeInfoValidation(body);
       if (error)
         return res
-          .status(404)
-          .json({ status: 404, message: error.details[0].message });
+          .status(400)
+          .json({ status: 400, message: error.details[0].message });
       const isIdExist = await DbQuery.selectByField(
         "nationalId",
         body.nationalId
