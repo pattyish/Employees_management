@@ -36,6 +36,7 @@ class EmployeeController {
           message: ` employee with this ${body.nationalId} is already exist `
         });
       const newEmployee = new EmployeeSchema(body);
+      newEmployee.position = body.position;
       const saveEmployee = await DbQuery.insertData(newEmployee);
       if (!saveEmployee)
         return res
