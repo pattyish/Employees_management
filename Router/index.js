@@ -7,6 +7,7 @@ import changeStatusEmployee from "./changingEmplStatusRoute";
 import searchEmployee from "./searchEmployeeRouter";
 import managerRoute from "./managerRoute";
 import employList from "./listOfEmployee";
+import employeesList from "./uploadEmployRoute";
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use("/employee_management/api", changeStatusEmployee);
 app.use("/employee_management/api", searchEmployee);
 app.use("/employee_management/api", managerRoute);
 app.use("/employee_management/api", employList);
+app.use("/employee_management/api", employeesList);
 
 
 export default app;
