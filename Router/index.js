@@ -33,4 +33,5 @@ app.use("/employee_management/api", searchEmployee);
 app.use("/employee_management/api", managerRoute);
 app.use("/employee_management/api", employList);
 
+
 export default app;

@@ -2,6 +2,10 @@
 project for employees managements
 
 # Features
+- Manager can sign up 
+- Manager can login by providing email and password
+# Authenticated Features 
+only manager should be able to perform this feature
 - Manager can create new employee and email sent to employee
 - Manager can edit employee record
 - Manager can delete employeee
@@ -11,8 +15,7 @@ project for employees managements
 - Manager can search employee by phone
 - Manager can search employee by email
 - Manager can search employee by position
-- Manager can sign up 
-- Manager can login by providing email and password
+- Manager can get employees list
 
 
 ## Getting Started

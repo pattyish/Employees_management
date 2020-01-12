@@ -92,7 +92,17 @@ class Dboperations {
       console.log(error);
     }
   }
-  
+  async selectAll() {
+    try {
+      const query = { text: `SELECT * FROM ${this.tableName} `, values: [] };
+      const results = await pool.query(query);
+      const allEmployee = results.rows;
+      const count = results.rowCount;
+      return { allEmployee, count };
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export { Dboperations as default };
