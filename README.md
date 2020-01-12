@@ -59,7 +59,7 @@ Make sure that you have cloned this Repo to your local machine
 * Express (Framework)
 
 ## DOCUMENTATION
-  link: [API documentation with POSTMAN]
+  link: [API documentation with POSTMAN] (https://web.postman.co/collections/8851862-5287b16c-8a75-40fb-9d9b-46d4a51f84ca/publish?workspace=3abda5d1-5cc8-40ac-8d85-674fb9f7b8e0)
 
 
 ## Author
