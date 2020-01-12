@@ -5,7 +5,7 @@ import editEmployee from "./editEmployeeRecord";
 import deleteEmployee from "./deleteEmployeeRouter";
 import changeStatusEmployee from "./changingEmplStatusRoute";
 import searchEmployee from "./searchEmployeeRouter";
-import managerSignUp from "./managerSignUpRoute";
+import managerRoute from "./managerSignUpRoute";
 
 const app = express();
 
@@ -29,6 +29,6 @@ app.use("/employee_management/api", editEmployee);
 app.use("/employee_management/api", deleteEmployee);
 app.use("/employee_management/api", changeStatusEmployee);
 app.use("/employee_management/api", searchEmployee);
-app.use("/employee_management/api", managerSignUp);
+app.use("/employee_management/api", managerRoute);
 
 export default app;

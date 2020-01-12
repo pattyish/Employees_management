@@ -48,6 +48,17 @@ class Userhelper {
     });
     return schema.validate(body);
   }
+  credentialValidation(body) {
+    const schema = {
+      email: Joi.string()
+        .email({ minDomainAtoms: 2 })
+        .required(),
+      password: Joi.string()
+        .regex(/^[a-zA-Z0-9]{3,30}$/)
+        .required()
+    };
+    return schema.validate(body, schema);
+  }
 }
 
 export default Userhelper;
