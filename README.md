@@ -16,6 +16,7 @@ only manager should be able to perform this feature
 - Manager can search employee by email
 - Manager can search employee by position
 - Manager can get employees list
+- Manager can create multple employee by uploading excel file
 
 
 ## Getting Started
@@ -51,6 +52,9 @@ Make sure that you have cloned this Repo to your local machine
 - POST `employee_management/api/employees/search/email` search employee based on email.
 - POST `employee_management/api/employees/search/phone` search employee based on phone.
 - POST `employee_management/api/employees/search/position` search employee based on position.
+- POST `employee_management/api/employees/employeelist` search employee based on position.
+- GET `employee_management/api/employees/` search employee based on position.
+
 
 ## Tools Used
 
@@ -59,7 +63,7 @@ Make sure that you have cloned this Repo to your local machine
 * Express (Framework)
 
 ## DOCUMENTATION
-  link: [API documentation with POSTMAN] (https://web.postman.co/collections/8851862-5287b16c-8a75-40fb-9d9b-46d4a51f84ca/publish?workspace=3abda5d1-5cc8-40ac-8d85-674fb9f7b8e0)
+  link: [API documentation with POSTMAN](https://web.postman.co/collections/8851862-5287b16c-8a75-40fb-9d9b-46d4a51f84ca/publish?workspace=3abda5d1-5cc8-40ac-8d85-674fb9f7b8e0)
 
 
 ## Author

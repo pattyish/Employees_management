@@ -50,7 +50,8 @@ class uploadEmployee {
             .status(500)
             .json({ status: 500, message: "database operation fail" });
         sendingEmail(saveEmployee);
-      });
+
+    });
       return res.status(201).json({
         status: 201,
         message: "employee created successful",
