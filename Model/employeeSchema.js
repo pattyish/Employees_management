@@ -6,7 +6,7 @@ class EmployeeSchema {
     this.phone = employeeData.phone;
     this.email = employeeData.email;
     this.dob = employeeData.dob;
-    this.position = employeeData.position;
+    this.position = "";
     this.status = "inactive";
   }
 

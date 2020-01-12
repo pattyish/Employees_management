@@ -13,7 +13,18 @@ const TableCreated = pool.query(
         position VARCHAR(150) NOT null ,
         status VARCHAR(30) NOT null
     );
-      INSERT INTO employees 
+    CREATE TABLE managers(
+      mag_id BIGSERIAL PRIMARY KEY,
+      manager_name VARCHAR(200) NOT null,
+      nationalId VARCHAR(50) NOT null unique,
+      phone VARCHAR(50) NOT null unique,
+      email VARCHAR(150) NOT null unique,
+      dob VARCHAR(20) NOT null, 
+      position VARCHAR(150) NOT null ,
+      status VARCHAR(30) NOT null,
+      password VARCHAR(30) NOT null
+  );
+    INSERT INTO employees 
     (empl_name, nationalId, phone, email, dob, position, status)
       VALUES(
       'patrick', 
@@ -24,6 +35,17 @@ const TableCreated = pool.query(
       '1',
       '2'
       ) RETURNING *;
+      INSERT INTO managers 
+      (managers_name, nationalId, phone, email, dob, position, status, password)
+        VALUES(
+        'admin', 
+        '1199770030084020',
+        '0782223230',
+        'patrickishimwe50@gmail.com',
+        '04/09/1996',
+        'manager',
+        'password'
+        ) RETURNING *;  
     `
 );
 export { TableCreated as default };
