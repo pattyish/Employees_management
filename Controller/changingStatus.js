@@ -43,7 +43,7 @@ export default class ChangingStatus {
         .json({ status: 500, message: "there is an error on db operation" });
     res.status(200).json({
       status: 200,
-      message: `employee with ${id} is successful deleted`
+      message: `employee with ${id} is successful suspended`
     });
   }
 }
