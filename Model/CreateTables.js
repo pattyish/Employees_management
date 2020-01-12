@@ -33,8 +33,8 @@ const TableCreated = pool.query(
       '0782214140',
       'patrickishimwe40@gmail.com',
       '04/09/1996',
-      '1',
-      '2'
+      'inactive',
+      'developer'
       ) RETURNING *;
       INSERT INTO managers 
       (manager_name, nationalId, phone, email, dob, position, status, password)

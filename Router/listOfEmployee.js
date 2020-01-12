@@ -1,11 +1,10 @@
 import express from 'express';
-import Employeecontroller from '../Controller/createEmployer';
+import employeeList from '../Controller/employeeList';
 import Authorisation from "../Middleware/authorization";
 const router = express.Router();
 
 const Authorise = new Authorisation();
-const CreateEmployee = new Employeecontroller();
 
-router.post('/employees', Authorise.auth, CreateEmployee.createEmployee);
+router.get('/employees/', Authorise.auth, employeeList);
 
 export { router as default };
