@@ -24,7 +24,7 @@ class Userhelper {
       position: Joi.string()
         .max(150)
         .required(),
-      status: Joi.number()
+      status: Joi.string()
     });
     return schema.validate(body);
   }

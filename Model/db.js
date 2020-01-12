@@ -61,6 +61,22 @@ class Dboperations {
       console.log(error);
     }
   }
+  async changeEmployeeStatus(data) {
+    const params = [];
+    Object.keys(data).forEach(key => {
+      params.push(data[key]);
+    });
+    try {
+      const updateQuery = {
+        text: `UPDATE ${this.tableName} SET empl_name = $2, nationalId = $3, phone = $4, email = $5, dob = $6, position = $7, status = $8 WHERE empl_id = $1  RETURNING *`,
+        values: params
+      };
+      const results = await pool.query(updateQuery);
+      return results.rows[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async deleteEmployee(id) {
     try {
       const deleteQuery = {
@@ -76,34 +92,7 @@ class Dboperations {
       console.log(error);
     }
   }
-  async activateEmployee(params) {
-    try {
-      const activateQuery = {
-        text: `UPDATE ${this.tableName} SET status = 1  WHERE empl_id = $1 RETURNING *`,
-        values: params
-      };
-      const results = pool.query(activateQuery);
-      return results.rows[0];
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  async suspendEmployee(data) {
-    try {
-      Object.keys(data).forEach(key => {
-        params.push(data[key]);
-      });
-      console.log(params);
-      const suspengQuery = {
-        text: `UPDATE ${this.tableName} SET status = $1 WHERE empl_id = $2 RETURNING *`,
-        values: params
-      };
-      const results = pool.query(suspengQuery);
-      return results.rows[0];
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  
 }
 
 export { Dboperations as default };
