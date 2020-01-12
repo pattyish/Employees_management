@@ -40,7 +40,7 @@ class Dboperations {
         values: params
       };
       const results = await pool.query(insertQuery);
-      return results.rows;
+      return results.rows[0];
     } catch (err) {
       console.log(`error on insert ${err}`);
     }
