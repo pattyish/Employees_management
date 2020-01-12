@@ -1,8 +1,8 @@
-import Helper from "../Helper/managerHelper";
-import DbOperation from "../Model/db";
+import Helpers from "../Helper/managerHelper";
+import DbOperation from "../Model/manageDbOperation";
 
-const Helpers = new Helper();
-const DbQuery = new DbOperation("employees");
+const Helper = new Helpers();
+const DbQuery = new DbOperation("managers");
 export default async function(req, res) {
   try {
     const { body } = req;
@@ -21,7 +21,7 @@ export default async function(req, res) {
       body.password,
       checkEmail.row[0].password
     );
-    const managerName = checkEmail.row[0].empl_name;
+    const managerName = checkEmail.row[0].manager_name;
     const managerEmail = checkEmail.row[0].email;
     if (!checkPassword)
       return res

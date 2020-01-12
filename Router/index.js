@@ -5,7 +5,7 @@ import editEmployee from "./editEmployeeRecord";
 import deleteEmployee from "./deleteEmployeeRouter";
 import changeStatusEmployee from "./changingEmplStatusRoute";
 import searchEmployee from "./searchEmployeeRouter";
-import managerRoute from "./managerSignUpRoute";
+import managerRoute from "./managerRoute";
 
 const app = express();
 
