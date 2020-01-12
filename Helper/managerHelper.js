@@ -18,16 +18,16 @@ class Userhelper {
     return Token;
   }
 
-  async hashPassword(userPassword) {
-    return bcrypt.hashSync(userPassword, 10);
+  async hashPassword(mangerPassword) {
+    return bcrypt.hashSync(mangerPassword, 10);
   }
 
-  comparePassword(userPassword, hashedPassword) {
-    return bcrypt.compareSync(userPassword, hashedPassword);
+  comparePassword(managerPassword, hashedPassword) {
+    return bcrypt.compareSync(managerPassword, hashedPassword);
   }
   managerInfoValidation(body) {
     const schema = Joi.object({
-      empl_name: Joi.string()
+      manager_name: Joi.string()
         .min(5)
         .required(),
       nationalId: Joi.string()
@@ -38,26 +38,29 @@ class Userhelper {
         .max(13)
         .required(),
       email: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ["com", "net",] } })
+        .email({ minDomainSegments: 2 })
         .required(),
       dob: Joi.string()
         .min(5)
         .required(),
       position: Joi.string(),
-      status: Joi.string()
+      status: Joi.string(),
+      password: Joi.string()
+        .regex(/^[a-zA-Z0-9]{3,30}$/)
+        .required()
     });
     return schema.validate(body);
   }
   credentialValidation(body) {
-    const schema = {
+    const schema = Joi.object({
       email: Joi.string()
-        .email({ minDomainAtoms: 2 })
+        .email({ minDomainSegments: 2 })
         .required(),
       password: Joi.string()
         .regex(/^[a-zA-Z0-9]{3,30}$/)
         .required()
-    };
-    return schema.validate(body, schema);
+    });
+    return schema.validate(body);
   }
 }
 

@@ -3,6 +3,7 @@ import pool from "./dbConnection";
 const TableCreated = pool.query(
   `   
     DROP TABLE IF EXISTS employees;
+    DROP TABLE IF EXISTS managers;
         CREATE TABLE employees(
         empl_id BIGSERIAL PRIMARY KEY,
         empl_name VARCHAR(200) NOT null,
@@ -22,7 +23,7 @@ const TableCreated = pool.query(
       dob VARCHAR(20) NOT null, 
       position VARCHAR(150) NOT null ,
       status VARCHAR(30) NOT null,
-      password VARCHAR(30) NOT null
+      password VARCHAR(200) NOT null
   );
     INSERT INTO employees 
     (empl_name, nationalId, phone, email, dob, position, status)
@@ -36,7 +37,7 @@ const TableCreated = pool.query(
       '2'
       ) RETURNING *;
       INSERT INTO managers 
-      (managers_name, nationalId, phone, email, dob, position, status, password)
+      (manager_name, nationalId, phone, email, dob, position, status, password)
         VALUES(
         'admin', 
         '1199770030084020',
@@ -44,6 +45,7 @@ const TableCreated = pool.query(
         'patrickishimwe50@gmail.com',
         '04/09/1996',
         'manager',
+        'active',
         'password'
         ) RETURNING *;  
     `

@@ -11,6 +11,8 @@ project for employees managements
 - Manager can search employee by phone
 - Manager can search employee by email
 - Manager can search employee by position
+- Manager can sign up 
+- Manager can login by providing email and password
 
 
 ## Getting Started

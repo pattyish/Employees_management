@@ -52,7 +52,7 @@ class Dboperations {
     });
     try {
       const updateQuery = {
-        text: `UPDATE ${this.tableName} SET empl_name = $2, nationalId = $3, phone = $4, email = $5, dob = $6, position = $7, status = $8 WHERE empl_id = $1  RETURNING *`,
+        text: `UPDATE ${this.tableName} SET empl_name = $2, nationalId = $3, phone = $4, email = $5, dob = $6, position = $7, status = $8, password = $9 WHERE empl_id = $1  RETURNING *`,
         values: params
       };
       const results = await pool.query(updateQuery);
@@ -61,7 +61,6 @@ class Dboperations {
       console.log(error);
     }
   }
-  
 }
 
 export { Dboperations as default };
