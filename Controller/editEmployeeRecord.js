@@ -26,6 +26,7 @@ export default class EditEmployeeRecord {
         .json({ status: 400, message: "national id should be 16 digits" });
     }
     const changesOnEmployee = new EmployeeSchema(body);
+    changesOnEmployee.position = body.position;
     const updateEmployee = await DbQuery.editData(id, changesOnEmployee);
     if (!updateEmployee)
       return res
