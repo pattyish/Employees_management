@@ -31,8 +31,8 @@ class EmployeeController {
         body.nationalId
       );
       if (isIdExist.count > 0)
-        return res.status(404).json({
-          status: 404,
+        return res.status(400).json({
+          status: 400,
           message: ` employee with this ${body.nationalId} is already exist `
         });
       const newEmployee = new EmployeeSchema(body);
