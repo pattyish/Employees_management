@@ -15,7 +15,7 @@ class uploadEmployee {
       const wb = xlsx.readFile(`${filesInfo.path}`, { cellDates: true });
       const ws = wb.Sheets["Sheet1"];
       const data = xlsx.utils.sheet_to_json(ws);
-      data.forEach(async (employee)=> {
+      data.forEach(async (employee) => {
         employee.nationalId = employee.nationalId.toString();
         employee.phone = employee.phone.toString();
         const { error } = await Helpers.employeeInfoValidation(employee);
@@ -40,7 +40,7 @@ class uploadEmployee {
         if (isIdExist.count > 0)
           return res.status(400).json({
             status: 400,
-            message: ` employee with this ${employee.nationalId} is already exist `
+            message: ` employee with this ${employee.nationalId} is already exist `,
           });
         const newEmployee = new EmployeeSchema(employee);
         newEmployee.position = employee.position;
@@ -50,12 +50,11 @@ class uploadEmployee {
             .status(500)
             .json({ status: 500, message: "database operation fail" });
         sendingEmail(saveEmployee);
-
-    });
+      });
       return res.status(201).json({
         status: 201,
         message: "employee created successful",
-        data
+        data,
       });
     } catch (error) {
       console.log(error);
