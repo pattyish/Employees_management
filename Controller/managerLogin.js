@@ -3,9 +3,10 @@ import DbOperation from "../Model/manageDbOperation";
 
 const Helper = new Helpers();
 const DbQuery = new DbOperation("managers");
-export default async function(req, res) {
+export default async function (req, res) {
   try {
     const { body } = req;
+    console.log(body)
     const { error } = await Helper.credentialValidation(body);
     if (error)
       return res

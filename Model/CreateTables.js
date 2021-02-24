@@ -1,8 +1,7 @@
 import pool from "./dbConnection";
 
 const TableCreated = pool.query(
-  `   
-    DROP TABLE IF EXISTS employees;
+  ` DROP TABLE IF EXISTS employees;
     DROP TABLE IF EXISTS managers;
         CREATE TABLE employees(
         empl_id BIGSERIAL PRIMARY KEY,
@@ -33,8 +32,8 @@ const TableCreated = pool.query(
       '0782214140',
       'patrickishimwe40@gmail.com',
       '04/09/1996',
-      'inactive',
-      'developer'
+      'developer',
+      'inactive' 
       ) RETURNING *;
       INSERT INTO managers 
       (manager_name, nationalId, phone, email, dob, position, status, password)

@@ -1,21 +1,21 @@
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 
 dotenv.config();
-export default async function(data){
-    let transporter = nodemailer.createTransport({
-        host: process.env.SERVERHOST,
-        port: 587,
-        secure: false,
-        auth: {
-          user: process.env.USEREMAIL, 
-          pass: process.env.USERPASSWORD 
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-      });
-    const message = `
+export default async function (data) {
+  let transporter = nodemailer.createTransport({
+    host: process.env.SERVERHOST,
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.USEREMAIL,
+      pass: process.env.USERPASSWORD,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+  const message = `
     <h2 style="color: blue;"><b>this prove that you joined awesomity</b></h2>
     <hr>
     <div>
@@ -32,14 +32,14 @@ export default async function(data){
     </p>
     </div>
     `;
-      let info = await transporter.sendMail({
-        from: `"Awesiomity" <${process.env.USEREMAIL}>`,
-        to: `${data.email}`, 
-        subject: "joining message", 
-        text: "Hello world?", 
-        html: message 
-      });
-    
-      console.log("Message sent: %s", info.messageId);
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    }
+  let info = await transporter.sendMail({
+    from: `"Awesiomity" <${process.env.USEREMAIL}>`,
+    to: `${data.email}`,
+    subject: "joining message",
+    text: "Hello world?",
+    html: message,
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+}

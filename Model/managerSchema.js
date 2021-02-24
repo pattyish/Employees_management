@@ -17,7 +17,7 @@ class ManagerSchema {
       email: this.email,
       dob: this.dob,
       position: this.position,
-      status: this.status
+      status: this.status,
     };
   }
 }

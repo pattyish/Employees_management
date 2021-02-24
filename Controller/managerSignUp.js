@@ -6,7 +6,7 @@ import idValidation from "../Helper/Idvalidation";
 
 const Helpers = new Helper();
 const DbQuery = new DbOperation("managers");
-export default async function(req, res) {
+export default async function (req, res) {
   try {
     const { body } = req;
     const { error } = await Helpers.managerInfoValidation(body);
@@ -31,7 +31,7 @@ export default async function(req, res) {
     if (isIdExist.count > 0)
       return res.status(400).json({
         status: 400,
-        message: ` employee with this ${body.nationalId} is already exist `
+        message: ` employee with this ${body.nationalId} is already exist `,
       });
     const newManage = new ManagerSchema(body);
     newManage.status = "active";
@@ -45,13 +45,13 @@ export default async function(req, res) {
         .json({ status: 500, message: "database operation fail" });
     const generateToken = await Helpers.generateToken(saveEmployee);
     const data = newManage.displayManager();
-    if (generateToken){
-        return res.status(201).json({
-            status: 201,
-            message: "manager account created successful",
-            data,
-            token: generateToken
-          });
+    if (generateToken) {
+      return res.status(201).json({
+        status: 201,
+        message: "manager account created successful",
+        data,
+        token: generateToken,
+      });
     }
   } catch (error) {
     console.log(error);

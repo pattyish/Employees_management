@@ -20,3 +20,4 @@ export default async function(req, res) {
     throw error;
   }
 }
+
