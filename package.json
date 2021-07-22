@@ -34,7 +34,7 @@
     "nodemailer": "^6.4.2",
     "path": "^0.12.7",
     "pg": "^7.17.0",
-    "xlsx": "^0.15.4"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
