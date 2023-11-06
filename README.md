@@ -62,9 +62,6 @@ Make sure that you have cloned this Repo to your local machine
 * Node JS
 * Express (Framework)
 
-## DOCUMENTATION
-  link: [API documentation with POSTMAN](https://documenter.getpostman.com/view/8851862/SWLiZ5sX)
-
 
 ## Author
 - ISHIMWE Patrick <patrickishimwe16@gmail.com>
